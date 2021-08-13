@@ -1,0 +1,44 @@
+/* Primary color: #2850AE */
+/* Secondary color: #171717 */
+/* Tirtary color: #62E1FB */
+
+.App {
+  color: #2850ae;
+  background-color: #ffffff;
+  display: grid;
+  grid-template-columns: 30% 70%;
+  height: 100vh;
+}
+
+.leftPanel {
+  background-color: #2850ae;
+  color: #ffffff;
+  padding: 20px;
+  text-align: center;
+}
+
+.header {
+  font-size: 1.5rem;
+  font-weight: 500;
+  cursor: pointer;
+  background-color: transparent;
+}
+
+.header::after {
+  content: ' ';
+  display: block;
+  width: 130px;
+  height: 5px;
+  background: #2850ae;
+  background: linear-gradient(122deg, #2850ae 0%, #62e1fb 100%);
+  border-radius: 0px 10px 10px 0px;
+}
+
+.header:hover::after {
+  background: #62e1fb;
+  transition: background 300ms linear;
+}
+
+.header > img {
+  vertical-align: text-top;
+}
