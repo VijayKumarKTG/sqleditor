@@ -6,7 +6,7 @@
   color: #2850ae;
   background-color: #ffffff;
   display: grid;
-  grid-template-columns: 30% 70%;
+  grid-template-columns: 230px 80%;
   height: 100vh;
 }
 
@@ -14,7 +14,6 @@
   background-color: #2850ae;
   color: #ffffff;
   padding: 20px;
-  text-align: center;
 }
 
 .header {
