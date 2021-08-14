@@ -1,0 +1,16 @@
+.button {
+  background-color: #2b66f1d4;
+  color: #ffffff;
+  padding: 5px 15px;
+  border: none;
+  border-radius: 4px;
+  font-family: 'Poppins';
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+.button:hover,
+.button:focus {
+  background-color: #2850ae;
+  transition: background 500ms ease-out;
+}

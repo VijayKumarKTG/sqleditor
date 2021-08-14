@@ -1,0 +1,27 @@
+.queries {
+  display: grid;
+  grid-template-columns: repeat(4, 22%);
+  column-gap: 20px;
+  row-gap: 20px;
+  justify-content: center;
+}
+
+.btnContainer {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.btnStyles {
+  width: 130px;
+  height: 40px;
+}
+
+.bgColorRed {
+  background-color: #f55e5e;
+}
+
+.bgColorRed:hover,
+.bgColorRed:focus {
+  background-color: #c22e2e;
+}

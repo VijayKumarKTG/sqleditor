@@ -14,6 +14,9 @@
   background-color: #2850ae;
   color: #ffffff;
   padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .header {
@@ -40,4 +43,33 @@
 
 .header > img {
   vertical-align: text-top;
+}
+
+.profile {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.user {
+  padding: 5px;
+  border: 2px solid #ffffff;
+  border-radius: 50%;
+}
+
+.userName {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.userPost {
+  margin: 0;
+  font-family: 'Poppins';
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+  font-weight: 300;
+}
+
+.rightPanel {
+  padding: 20px;
 }
