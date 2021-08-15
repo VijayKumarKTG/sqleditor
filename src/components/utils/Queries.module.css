@@ -1,20 +1,32 @@
 .queries {
-  display: grid;
-  grid-template-columns: repeat(4, 22%);
-  column-gap: 20px;
-  row-gap: 20px;
-  justify-content: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-top: 10px;
 }
 
-.btnContainer {
+.play {
+  width: 20px;
+  height: 20px;
+}
+
+.btnPlay {
+  width: max-content;
   display: flex;
   justify-content: center;
-  align-items: flex-end;
+  align-items: center;
+  height: 33px;
+  background-color: #70db70;
+}
+
+.btnPlay:hover,
+.btnPlay:focus {
+  background-color: rgb(47, 182, 47);
 }
 
 .btnStyles {
-  width: 130px;
-  height: 40px;
+  margin: 0px 10px;
+  align-self: flex-end;
 }
 
 .bgColorRed {

@@ -2,7 +2,7 @@ import styles from './Select.module.css';
 
 export default function Select() {
   return (
-    <div>
+    <div className={styles.selectContainer}>
       <label htmlFor='select' className={styles.label}>
         Select column
       </label>

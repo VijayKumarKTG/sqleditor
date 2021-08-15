@@ -1,6 +1,7 @@
 import Select from './Select';
 import Button from './Button';
 import styles from './Queries.module.css';
+import play from '../../assets/play.svg';
 
 export default function Queries() {
   return (
@@ -8,18 +9,16 @@ export default function Queries() {
       <Select />
       <Select />
       <Select />
-      <div className={styles.btnContainer}>
-        <Button text='Run query' classNames={styles.btnStyles} />
-      </div>
-      <Select />
-      <Select />
-      <Select />
-      <div className={styles.btnContainer}>
-        <Button
-          classNames={`${styles.btnStyles} ${styles.bgColorRed}`}
-          text='Reset all'
+      <Button classNames={`${styles.btnStyles} ${styles.btnPlay}`}>
+        <img
+          src={play}
+          alt='play button to run queries'
+          className={styles.play}
         />
-      </div>
+      </Button>
+      <Button classNames={`${styles.btnStyles} ${styles.bgColorRed}`}>
+        Reset all
+      </Button>
     </div>
   );
 }

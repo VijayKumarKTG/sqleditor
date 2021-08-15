@@ -2,7 +2,7 @@ import styles from './App.module.css';
 import Logo from '../utils/Logo';
 import Navigation from '../utils/Navigation';
 import Queries from '../utils/Queries';
-import user from '../../assets/user.svg';
+import user from '../../assets/user.jpg';
 
 function App() {
   return (
@@ -19,6 +19,7 @@ function App() {
         <Navigation />
       </div>
       <div className={styles.rightPanel}>
+        <div className={styles.tableName}>Products</div>
         <Queries />
         <div className={styles.tableContainer}>
           <table className={styles.table}>
