@@ -1,7 +1,7 @@
 import styles from './Navigation.module.css';
 import layout from '../../assets/layout.svg';
 import trash from '../../assets/trash.svg';
-import Icon from '../utils/Icon';
+import Icon from '../Icon/Icon';
 
 function Navigation() {
   return (
