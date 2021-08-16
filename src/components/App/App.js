@@ -1,6 +1,6 @@
 import styles from './App.module.css';
 import Logo from '../Logo/Logo';
-import Navigation from '../Navigation/Navigation';
+import TableList from '../TableList/TableList';
 import Queries from '../Queries/Queries';
 import Table from '../Table/Table';
 import user from '../../assets/user.jpg';
@@ -17,10 +17,13 @@ function App() {
           <p className={styles.userName}>John Doe</p>
           <p className={styles.userPost}>Database Admin</p>
         </div>
-        <Navigation />
+        <TableList />
       </div>
       <div className={styles.rightPanel}>
-        <div className={styles.tableName}>Products</div>
+        <div className={styles.rightPanleHead}>
+          <h2 className={styles.tableName}>Products</h2>
+          <p className={styles.lastVisited}>Last visited: 13th August, 20201</p>
+        </div>
         <Queries />
         <Table />
       </div>

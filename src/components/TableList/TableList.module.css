@@ -3,15 +3,12 @@
   font-family: 'Poppins';
   letter-spacing: 1px;
   margin-top: 30px;
-  position: relative;
   width: 100%;
 }
 
 .item {
   font-weight: 500;
   padding: 5px;
-  position: relative;
-  left: -15px;
   cursor: pointer;
   border-radius: 4px;
   display: flex;

@@ -4,15 +4,22 @@
 * {
   scrollbar-width: thin;
   scrollbar-color: blue orange;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 /* Works on Chrome, Edge, and Safari */
 *::-webkit-scrollbar {
   width: 12px;
+  height: 12px;
+  border-radius: 5px;
 }
 
 *::-webkit-scrollbar-track {
-  background: rgb(255, 255, 255);
+  background: #ffffff;
+  border-radius: 5px;
+  width: 100%;
 }
 
 *::-webkit-scrollbar-thumb {

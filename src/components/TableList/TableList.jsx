@@ -1,4 +1,4 @@
-import styles from './Navigation.module.css';
+import styles from './TableList.module.css';
 import layout from '../../assets/layout.svg';
 import trash from '../../assets/trash.svg';
 import Icon from '../Icon/Icon';

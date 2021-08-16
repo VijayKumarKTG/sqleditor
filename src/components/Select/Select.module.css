@@ -14,9 +14,13 @@
   font-family: 'Rubik';
   font-size: 0.9rem;
   padding: 5px;
-  color: #2850ae;
+  color: #3a3a3a;
   border: 2px solid #819fe6;
   border-radius: 4px;
   background: #ffffff;
   width: 100%;
+}
+
+.option {
+  color: #3a3a3a;
 }

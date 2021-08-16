@@ -1,35 +1,44 @@
-.tableName {
-  font-family: 'Rubik';
-  font-size: 1.5rem;
-  font-weight: 600;
-}
-
 .tableContainer {
   width: 100%;
-  height: 420px;
+  height: 470px;
   overflow: auto;
   margin-top: 20px;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 1px 1px 6px 2px #bfbebec2, -1px -1px 6px 2px #bfbebec2;
+  background-color: #ffffff;
 }
 
 .table {
   width: 100%;
-  border: 2px solid #2850ae;
-  border-radius: 5px;
-  position: relative;
 }
 
 .tableHead {
-  position: sticky;
-  left: 0;
-  top: 2px;
-  background: #ffffff;
-  padding: 10px;
-  outline: 2px solid #2850ae;
+  background: #3763cac2;
   height: 50px;
+  border-radius: 5px;
+  color: #ffffff;
+}
+
+.tableFoot {
+  background: #efefef;
+  height: 30px;
+  border-radius: 5px;
 }
 
 th,
-td {
+.tableFoot td {
   padding: 5px 10px;
   text-align: center;
+}
+
+.tableBody td {
+  outline: 2px solid #efefef;
+  text-align: center;
+  padding: 3px 5px;
+}
+
+.tableBody td:hover,
+.tableBody td:focus {
+  background-color: aliceblue;
 }

@@ -1,22 +1,25 @@
-import styles from '../Table/Table';
+import styles from './Table.module.css';
 
 export default function Table() {
   return (
     <div className={styles.tableContainer}>
       <table className={styles.table}>
-        <thead>
-          <tr className={styles.tableHead}>
+        <thead className={styles.tableHead}>
+          <tr>
             <th>productID</th> <th>productName</th> <th>supplierID</th>
             <th>categoryID</th> <th>quantityPerUnit</th> <th>unitPrice</th>
             <th>unitsInStock</th> <th>unitsOnOrder</th>
             <th>reorderLevel</th> <th>discontinued</th>
           </tr>
         </thead>
-        <tbody>
+        <tbody className={styles.tableBody}>
           <tr>
-            <td>1</td> <td>Chai</td> <td>1</td> <td>1</td>
-            <td>10 boxes x 20 bags</td> <td>18.00</td> <td>39</td>
-            <td>0</td> <td>10</td> <td>0</td>
+            <td tabIndex='0'>1</td> <td tabIndex='0'>Chai</td>
+            <td tabIndex='0'>1</td> <td tabIndex='0'>1</td>
+            <td tabIndex='0'>10 boxes x 20 bags</td> <td tabIndex='0'>18.00</td>
+            <td tabIndex='0'>39</td>
+            <td tabIndex='0'>0</td> <td tabIndex='0'>10</td>
+            <td tabIndex='0'>0</td>
           </tr>
           <tr>
             <td>2</td> <td>Chang</td> <td>1</td> <td>1</td>
@@ -90,7 +93,7 @@ export default function Table() {
             <td>0</td> <td>5</td> <td>0</td>
           </tr>
         </tbody>
-        <tfoot>
+        <tfoot className={styles.tableFoot}>
           <tr>
             <td>15</td> <td>Genen Shouyu</td> <td>6</td> <td>2</td>
             <td>24 - 250 ml bottles</td> <td>15.50</td> <td>39</td>
