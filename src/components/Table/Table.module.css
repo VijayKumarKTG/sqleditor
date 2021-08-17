@@ -42,11 +42,20 @@ tr {
   padding: 3px 5px;
 }
 
-.tableBody td:hover {
-  background-color: #baccf7af;
-}
-
 .tableBody td:focus {
   border: 2px solid #a5c0fdb9;
   border-radius: 2px;
+}
+
+.textareaStyles {
+  color: #2850ae;
+  font-size: 1rem;
+  border: none;
+  outline: none;
+}
+
+.textareaStyles:focus {
+  outline: none;
+  border: 2px solid #7a94d1c9;
+  border-radius: 5px;
 }

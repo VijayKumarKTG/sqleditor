@@ -30,14 +30,17 @@ function App() {
   const [search, setSearchInput] = useState('');
 
   function colOnChange(e) {
+    e.preventDefault();
     setSelectCol(e.target.value);
   }
 
   function sortOnChange(e) {
+    e.preventDefault();
     setSelectSort(e.target.value);
   }
 
   function searchOnChange(e) {
+    e.preventDefault();
     setSearchInput(e.target.value);
   }
 
@@ -45,6 +48,15 @@ function App() {
     setSelectCol('All');
     setSelectSort('Ascend');
     setSearchInput('');
+  }
+
+  // Tables data manipulation functions
+  function onTablesDataChange(arr) {
+    setTablesData(() => {
+      let newTablesData = [...tablesData];
+      newTablesData[activeTable] = arr;
+      return newTablesData;
+    });
   }
 
   useEffect(() => {
@@ -103,10 +115,15 @@ function App() {
           searchOnChange={searchOnChange}
           resetAll={resetAll}
         />
-        <Table
-          data={tablesData.length ? tablesData[activeTable].slice(1) : ''}
-          cols={columns}
-        />
+        {tablesData.length ? (
+          <Table
+            data={tablesData[activeTable].slice(1)}
+            cols={columns}
+            setTablesData={onTablesDataChange}
+          />
+        ) : (
+          'Loading table...'
+        )}
       </div>
     </div>
   );
