@@ -3,19 +3,12 @@ import Button from '../Button/Button';
 import styles from './Queries.module.css';
 //import play from '../../assets/play.svg';
 
-export default function Queries() {
+export default function Queries({ cols }) {
   return (
     <div className={styles.queries}>
-      <Select />
-      <Select />
-      <Select />
-      {/* <Button classNames={`${styles.btnStyles} ${styles.btnPlay}`}>
-        <img
-          src={play}
-          alt='play button to run queries'
-          className={styles.play}
-        />
-      </Button> */}
+      <Select options={cols} />
+      <Select options={cols} />
+      <Select options={cols} />
       <Button classNames={`${styles.btnStyles} ${styles.bgColorRed}`}>
         Reset all
       </Button>

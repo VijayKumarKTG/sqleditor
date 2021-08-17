@@ -8,14 +8,18 @@ import user from '../../assets/user.jpg';
 import { getData } from '../../utils/index';
 
 function App() {
+  // Table List States
   const [tables, setTables] = useState([
     'Products',
     'Customers',
     'Orders',
     'Suppliers',
-  ]);
-  const [tablesData, setTablesData] = useState([]);
-  const [selectedTable, setSelectedTable] = useState(0);
+  ]); // List of all the tables
+  const [tablesData, setTablesData] = useState([]); // Parsed data in array for each table
+  const [activeTable, setActiveTable] = useState(0); // Current active table
+
+  // Queries States
+  const [columns, setColumns] = useState([]);
 
   useEffect(() => {
     async function fetchData() {
@@ -29,16 +33,21 @@ function App() {
     }
     if (tablesData.length === 0) {
       fetchData().then((data) => {
-        setTablesData(() => data.map((e) => e.data));
+        setTablesData(() => {
+          let array = data.map((e) => e.data);
+          setColumns(array[activeTable][0]);
+          return array;
+        });
       });
     }
     return () => {
       //cleanup;
     };
-  }, [tables, setTables, tablesData]);
+  }, [tables, setTables, tablesData, setColumns, activeTable]);
 
   function selectTable(index) {
-    setSelectedTable(index);
+    setActiveTable(index);
+    setColumns(tablesData[index][0]);
   }
 
   return (
@@ -54,16 +63,16 @@ function App() {
         </div>
         <TableList
           tables={tables}
-          selectedTable={tables[selectedTable]}
+          selectedTable={tables[activeTable]}
           selectTable={selectTable}
         />
       </div>
       <div className={styles.rightPanel}>
         <div className={styles.rightPanleHead}>
-          <h2 className={styles.tableName}>{tables[selectedTable]}</h2>
+          <h2 className={styles.tableName}>{tables[activeTable]}</h2>
           <p className={styles.lastVisited}>Last visited: 13th August, 20201</p>
         </div>
-        <Queries />
+        <Queries cols={columns} />
         <Table />
       </div>
     </div>
