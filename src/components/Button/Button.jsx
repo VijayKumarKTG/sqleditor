@@ -1,9 +1,11 @@
 import styles from './Button.module.css';
 
-export default function Button(props) {
+export default function Button({ classNames, onClickHandler, children }) {
   return (
-    <button className={`${styles.button} ${props.classNames}`}>
-      {props.children}
+    <button
+      className={`${styles.button} ${classNames}`}
+      onClick={onClickHandler}>
+      {children}
     </button>
   );
 }

@@ -8,7 +8,7 @@ import user from '../../assets/user.jpg';
 import { getData } from '../../utils/index';
 
 function App() {
-  // Table List States
+  // Table List States and Change handlers
   const [tables, setTables] = useState([
     'Products',
     'Customers',
@@ -18,8 +18,34 @@ function App() {
   const [tablesData, setTablesData] = useState([]); // Parsed data in array for each table
   const [activeTable, setActiveTable] = useState(0); // Current active table
 
+  function selectTable(index) {
+    setActiveTable(index);
+    setColumns(tablesData[index][0]);
+  }
+
   // Queries States
   const [columns, setColumns] = useState([]);
+  const [selectCol, setSelectCol] = useState('');
+  const [selectSort, setSelectSort] = useState('');
+  const [search, setSearchInput] = useState('');
+
+  function colOnChange(e) {
+    setSelectCol(e.target.value);
+  }
+
+  function sortOnChange(e) {
+    setSelectSort(e.target.value);
+  }
+
+  function searchOnChange(e) {
+    setSearchInput(e.target.value);
+  }
+
+  function resetAll() {
+    setSelectCol('All');
+    setSelectSort('Ascend');
+    setSearchInput('');
+  }
 
   useEffect(() => {
     async function fetchData() {
@@ -45,11 +71,6 @@ function App() {
     };
   }, [tables, setTables, tablesData, setColumns, activeTable]);
 
-  function selectTable(index) {
-    setActiveTable(index);
-    setColumns(tablesData[index][0]);
-  }
-
   return (
     <div className={styles.App}>
       <div className={styles.leftPanel}>
@@ -70,9 +91,18 @@ function App() {
       <div className={styles.rightPanel}>
         <div className={styles.rightPanleHead}>
           <h2 className={styles.tableName}>{tables[activeTable]}</h2>
-          <p className={styles.lastVisited}>Last visited: 13th August, 20201</p>
+          <p className={styles.lastVisited}>Last visited: 13th August, 2021</p>
         </div>
-        <Queries cols={columns} />
+        <Queries
+          cols={columns}
+          selectCol={selectCol}
+          colOnChange={colOnChange}
+          selectSort={selectSort}
+          sortOnChange={sortOnChange}
+          search={search}
+          searchOnChange={searchOnChange}
+          resetAll={resetAll}
+        />
         <Table
           data={tablesData.length ? tablesData[activeTable].slice(1) : ''}
           cols={columns}

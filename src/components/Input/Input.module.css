@@ -1,0 +1,22 @@
+.inputContainer {
+  width: 100%;
+  margin-right: 20px;
+}
+
+.label {
+  font-family: 'Poppins';
+  display: block;
+  font-weight: 500;
+  margin-bottom: 5px;
+}
+
+.input {
+  font-family: 'Rubik';
+  font-size: 0.9rem;
+  padding: 5px;
+  color: #3a3a3a;
+  border: 2px solid #819fe6;
+  border-radius: 4px;
+  background: #ffffff;
+  width: 100%;
+}
