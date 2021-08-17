@@ -32,6 +32,10 @@ th,
   text-align: center;
 }
 
+tr {
+  width: 400px;
+}
+
 .tableBody td {
   outline: 2px solid #efefef;
   text-align: center;
