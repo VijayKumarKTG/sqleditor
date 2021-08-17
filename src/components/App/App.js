@@ -73,7 +73,10 @@ function App() {
           <p className={styles.lastVisited}>Last visited: 13th August, 20201</p>
         </div>
         <Queries cols={columns} />
-        <Table />
+        <Table
+          data={tablesData.length ? tablesData[activeTable].slice(1) : ''}
+          cols={columns}
+        />
       </div>
     </div>
   );

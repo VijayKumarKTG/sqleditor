@@ -5,7 +5,7 @@
   margin-top: 20px;
   padding: 20px;
   border-radius: 5px;
-  box-shadow: 1px 1px 6px 2px #bfbebec2, -1px -1px 6px 2px #bfbebec2;
+  box-shadow: 1px 1px 4px 2px #bfbebec2, -1px -1px 4px 2px #bfbebec2;
   background-color: #ffffff;
 }
 
@@ -42,7 +42,11 @@ tr {
   padding: 3px 5px;
 }
 
-.tableBody td:hover,
+.tableBody td:hover {
+  background-color: #baccf7af;
+}
+
 .tableBody td:focus {
-  background-color: aliceblue;
+  border: 2px solid #a5c0fdb9;
+  border-radius: 2px;
 }
