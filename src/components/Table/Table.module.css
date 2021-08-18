@@ -40,6 +40,24 @@ tr {
   outline: 2px solid #efefef;
   text-align: center;
   padding: 3px 5px;
+  position: relative;
+}
+
+.tableBody td textarea {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  overflow: visible;
+  color: #2850ae;
+  font-size: 1rem;
+  text-align: center;
+  border: none;
+  opacity: 0;
+}
+
+.tableBody td textarea:focus {
+  opacity: 1;
 }
 
 .tableBody td:focus {

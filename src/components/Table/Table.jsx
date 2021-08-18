@@ -32,6 +32,7 @@ export default function Table({ data, cols, setTablesData }) {
           {data.map((row, rowIndex) => {
             let rows = row.map((dataPoint, index) => (
               <td key={rowIndex + '' + index} tabIndex='0'>
+                <p>{dataPoint}</p>
                 <Textarea
                   rows={dataPoint.split(' ').length}
                   classNames={styles.textareaStyles}
