@@ -1,6 +1,7 @@
 .selectContainer {
   width: 100%;
   margin-right: 20px;
+  position: relative;
 }
 
 .label {
@@ -19,8 +20,34 @@
   border-radius: 4px;
   background: #ffffff;
   width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.arrow {
+  width: 15px;
+  height: 15px;
+}
+
+.optionsList {
+  list-style-type: none;
+  background-color: #ffffff;
+  box-shadow: 1px 1px 5px 1px #b3b1b1;
+  border-radius: 0px 0px 5px 5px;
+  position: absolute;
+  z-index: 6;
+  width: 100%;
 }
 
 .option {
   color: #3a3a3a;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.option:hover {
+  color: #ffffff;
+  background-color: #4b6bb6;
+  transition: all 500ms ease-in;
 }

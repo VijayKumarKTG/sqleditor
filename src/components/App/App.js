@@ -24,33 +24,52 @@ function App() {
   }
 
   // Queries States
-  const [columns, setColumns] = useState([]);
-  const [selectCol, setSelectCol] = useState('');
-  const [selectSort, setSelectSort] = useState('');
-  const [search, setSearchInput] = useState('');
+  const [queries, setQueries] = useState({
+    selectCol: ['All'],
+    selectSort: 'Ascend',
+    search: '',
+  });
 
-  function colOnChange(e) {
-    e.preventDefault();
-    setSelectCol(e.target.value);
+  function colOnChange(value) {
+    setQueries(() => {
+      if (value === 'All') {
+        return {
+          selectSort: queries.selectSort,
+          search: queries.search,
+          selectCol: ['All'],
+        };
+      } else {
+        let selectCol =
+          queries.selectCol[0] === 'All' ? [] : [...queries.selectCol];
+        if (selectCol.indexOf(value) >= 0) {
+          selectCol = selectCol.filter((e) => e !== value);
+        } else {
+          selectCol.push(value);
+        }
+        return {
+          ...queries,
+          selectCol: selectCol,
+        };
+      }
+    });
   }
 
-  function sortOnChange(e) {
-    e.preventDefault();
-    setSelectSort(e.target.value);
+  function sortOnChange(value) {
+    setQueries({ ...queries, selectSort: value });
   }
 
   function searchOnChange(e) {
     e.preventDefault();
-    setSearchInput(e.target.value);
+    setQueries({ ...queries, search: e.target.value });
   }
 
   function resetAll() {
-    setSelectCol('All');
-    setSelectSort('Ascend');
-    setSearchInput('');
+    setQueries({ selectCol: ['All'], selectSort: 'Ascend', search: '' });
   }
 
   // Tables data manipulation functions
+  const [columns, setColumns] = useState([]);
+
   function onTablesDataChange(arr) {
     setTablesData(() => {
       let newTablesData = [...tablesData];
@@ -107,16 +126,17 @@ function App() {
         </div>
         <Queries
           cols={columns}
-          selectCol={selectCol}
+          selectCol={queries.selectCol}
           colOnChange={colOnChange}
-          selectSort={selectSort}
+          selectSort={queries.selectSort}
           sortOnChange={sortOnChange}
-          search={search}
+          search={queries.search}
           searchOnChange={searchOnChange}
           resetAll={resetAll}
         />
         {tablesData.length ? (
           <Table
+            queries={queries}
             data={tablesData[activeTable].slice(1)}
             cols={columns}
             setTablesData={onTablesDataChange}
