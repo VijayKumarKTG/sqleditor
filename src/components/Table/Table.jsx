@@ -1,9 +1,24 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import styles from './Table.module.css';
 import Textarea from '../Textarea/Textarea';
 
 export default function Table({ data, cols, setTablesData, queries }) {
-  const [allDat, setAllDat] = useState(data);
+  const [allDat, setAllDat] = useState('');
+
+  // this useEffect is to fire whenever user choose to
+  useEffect(() => {
+    function areEqualArrays(arr1, arr2) {
+      return JSON.stringify(arr1) === JSON.stringify(arr2);
+    }
+
+    if (!areEqualArrays(allDat, data)) {
+      setAllDat(data);
+    }
+
+    return () => {
+      //cleanup
+    };
+  }, [allDat, data]);
 
   function onDataPointChange(e, rowIndex, index) {
     e.preventDefault();
@@ -14,6 +29,7 @@ export default function Table({ data, cols, setTablesData, queries }) {
     });
   }
 
+  // To save the edited table data(allDat) into the parent states(data from App)
   function focusOut() {
     setTablesData([cols, ...allDat]);
   }
@@ -65,11 +81,17 @@ export default function Table({ data, cols, setTablesData, queries }) {
     }
   }
 
-  // Filtered table columns
-  let filteredCols = queries.selectCol[0] === 'All' ? cols : queries.selectCol;
+  // Filtered table head columns
+  let filteredCols;
 
   // Filtered table rows data using filter funciton
-  let filteredTable = filterTableData();
+  let filteredTable;
+
+  // Fire only when the new data arrive
+  if (allDat) {
+    filteredCols = queries.selectCol[0] === 'All' ? cols : queries.selectCol;
+    filteredTable = filterTableData();
+  }
 
   return (
     <div className={styles.tableContainer}>
