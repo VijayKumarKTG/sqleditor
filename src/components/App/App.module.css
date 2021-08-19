@@ -79,19 +79,8 @@
   width: 100%;
 }
 
-.rightPanleHead {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
 .tableName {
   font-family: 'Rubik';
   font-size: 1.5rem;
   font-weight: 600;
-}
-
-.lastVisited {
-  color: #3a3a3a;
-  font-size: 0.9rem;
 }

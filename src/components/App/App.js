@@ -120,10 +120,7 @@ function App() {
         />
       </div>
       <div className={styles.rightPanel}>
-        <div className={styles.rightPanleHead}>
-          <h2 className={styles.tableName}>{tables[activeTable]}</h2>
-          <p className={styles.lastVisited}>Last visited: 13th August, 2021</p>
-        </div>
+        <h2 className={styles.tableName}>{tables[activeTable]}</h2>
         <Queries
           cols={columns}
           selectCol={queries.selectCol}
@@ -140,6 +137,7 @@ function App() {
             data={tablesData[activeTable].slice(1)}
             cols={columns}
             setTablesData={onTablesDataChange}
+            activeTable={activeTable}
           />
         ) : (
           'Loading table...'

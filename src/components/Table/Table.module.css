@@ -9,6 +9,22 @@
   background-color: #ffffff;
 }
 
+.tableHead {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.saveBtn {
+  background-color: #5be756;
+  width: 200px;
+}
+
+.lastVisited {
+  color: #3a3a3a;
+  font-size: 0.9rem;
+}
+
 .table {
   width: 100%;
 }
@@ -26,10 +42,31 @@
   border-radius: 5px;
 }
 
-th,
-.tableFoot td {
-  padding: 5px 10px;
+th {
   text-align: center;
+  border-radius: 5px 5px 0px 0px;
+}
+
+th:hover .removeCol,
+th:focus .removeCol {
+  display: block;
+}
+
+.removeCol {
+  background-color: #f55e5e;
+  border-radius: 5px 5px 0px 0px;
+  width: 100%;
+  padding: 5px 0px;
+  display: none;
+}
+
+.removeCol:hover {
+  background-color: #fa4949;
+  transition: all 500ms ease-out;
+}
+
+th p {
+  padding: 10px;
 }
 
 tr {
@@ -41,6 +78,19 @@ tr {
   text-align: center;
   padding: 3px 5px;
   position: relative;
+}
+
+.removeRow {
+  background-color: #f55e5e;
+  border-radius: 5px 5px 0px 0px;
+  width: 100%;
+  padding: 5px 0px;
+  display: none;
+}
+
+.removeRow:hover {
+  background-color: #fa4949;
+  transition: all 500ms ease-out;
 }
 
 .tableBody td textarea {
