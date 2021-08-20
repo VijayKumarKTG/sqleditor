@@ -14,13 +14,14 @@ export default function Table({
   const [allDat, setAllDat] = useState('');
   const [columns, setColumns] = useState('');
   const [currentActiveTable, setCurrentActiveTable] = useState(-1);
+  const [lastEdited, setLastEdited] = useState(new Date());
 
   // this useEffect is to fire whenever user choose to
   useEffect(() => {
     if (currentActiveTable !== activeTable) {
       setCurrentActiveTable(activeTable);
-      setAllDat(data);
-      setColumns(cols);
+      setAllDat([...data]);
+      setColumns([...cols]);
     }
 
     return () => {
@@ -38,7 +39,8 @@ export default function Table({
   }
 
   // To save the edited table data(allDat) into the parent states(data from App)
-  function focusOut() {
+  function saveData() {
+    setLastEdited(new Date());
     setTablesData([columns, ...allDat]);
   }
 
@@ -89,6 +91,10 @@ export default function Table({
     }
   }
 
+  function checkEqualArrs(arr1, arr2) {
+    return JSON.stringify(arr1) === JSON.stringify(arr2);
+  }
+
   // Filtered table head columns
   let filteredCols;
 
@@ -112,6 +118,13 @@ export default function Table({
     }
   }
 
+  function onRowDelete(attr) {
+    let promptVal = prompt(`Are you sure you want the selected row.`);
+    if (promptVal === 'yes' || promptVal === 'Yes' || promptVal === 'YES') {
+      setAllDat(deleteRow(attr));
+    }
+  }
+
   function deleteCol(index) {
     let newDat = allDat.map((row) => [
       ...row.slice(0, index),
@@ -120,18 +133,42 @@ export default function Table({
     return newDat;
   }
 
+  function findRowWithAttr(attr, rows) {
+    for (let i = 0; i < rows.length; i++) {
+      for (let j = 0; j < rows[i].length; j++) {
+        if (rows[i][j] === attr) return i;
+      }
+    }
+  }
+
+  function deleteRow(attribute) {
+    let index = findRowWithAttr(attribute, allDat);
+    return index === 0
+      ? allDat.slice(1)
+      : [...allDat.slice(0, index), ...allDat.slice(index + 1)];
+  }
+
   return (
     <div className={styles.tableContainer}>
-      <div className={styles.tableHead}>
-        <Button classNames={styles.saveBtn}>Save changes</Button>
-        <p className={styles.lastVisited}>Last visited: 13th August, 2021</p>
+      <div className={styles.tableHeader}>
+        {!checkEqualArrs(allDat, data) ? (
+          <Button onClickHandler={saveData} classNames={styles.saveBtn}>
+            Save changes
+          </Button>
+        ) : (
+          <div></div>
+        )}
+        <p className={styles.lastVisited}>
+          Last edited: {lastEdited.toUTCString()}
+        </p>
       </div>
       {filteredCols && filteredTable ? (
         <table className={styles.table}>
           <thead className={styles.tableHead}>
             <tr>
+              <th>sqle</th>
               {filteredCols.map((col, i) => (
-                <th key={'col' + i}>
+                <th key={'col' + i} tabIndex='0'>
                   <div
                     onClick={() => onColumnDelete(col)}
                     className={styles.removeCol}>
@@ -145,7 +182,7 @@ export default function Table({
           <tbody className={styles.tableBody}>
             {filteredTable.map((row, rowIndex) => {
               let rows = row.map((dataPoint, index) => (
-                <td key={rowIndex + '' + index} tabIndex='0'>
+                <td key={rowIndex + '' + index}>
                   <p>{dataPoint}</p>
                   <Textarea
                     classNames={styles.textareaStyles}
@@ -153,10 +190,18 @@ export default function Table({
                     onChangeHandler={(e) =>
                       onDataPointChange(e, rowIndex, index)
                     }
-                    onBlurHandler={focusOut}
                   />
                 </td>
               ));
+              rows.unshift(
+                <td key={`deleteRow${rowIndex}`}>
+                  <div
+                    className={styles.removeRow}
+                    onClick={() => onRowDelete(row[0])}>
+                    <img src={remove} alt='Remove the focused row' />
+                  </div>
+                </td>
+              );
               return <tr key={'row' + rowIndex}>{rows}</tr>;
             })}
           </tbody>

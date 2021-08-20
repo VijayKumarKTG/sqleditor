@@ -21,6 +21,7 @@ function App() {
   function selectTable(index) {
     setActiveTable(index);
     setColumns(tablesData[index][0]);
+    resetAll();
   }
 
   // Queries States

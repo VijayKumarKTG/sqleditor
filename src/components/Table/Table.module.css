@@ -3,21 +3,33 @@
   height: 470px;
   overflow: auto;
   margin-top: 20px;
-  padding: 20px;
   border-radius: 5px;
   box-shadow: 1px 1px 4px 2px #bfbebec2, -1px -1px 4px 2px #bfbebec2;
   background-color: #ffffff;
 }
 
-.tableHead {
+.tableHeader {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  position: sticky;
+  left: 0;
+  top: 0;
+  background: #ffffff;
+  z-index: 5;
+  padding: 10px;
+  margin-top: 10px;
+  height: 55px;
 }
 
 .saveBtn {
   background-color: #5be756;
+  color: #252525;
   width: 200px;
+}
+
+.saveBtn:hover {
+  background-color: #42c43d;
 }
 
 .lastVisited {
@@ -27,13 +39,24 @@
 
 .table {
   width: 100%;
+  margin: 5px 20px 20px 20px;
+  position: relative;
 }
 
-.tableHead {
-  background: #3763cac2;
+.tableHead tr th {
+  background: #2850ae;
   height: 50px;
-  border-radius: 5px;
+  border-radius: 5px 5px 0px 0px;
   color: #ffffff;
+  position: sticky;
+  left: 0;
+  top: 55px;
+  z-index: 5;
+}
+
+.tableHead tr th:first-child {
+  background: none;
+  outline: none;
 }
 
 .tableFoot {
@@ -80,17 +103,32 @@ tr {
   position: relative;
 }
 
+.tableBody td:first-child {
+  padding: 0;
+  outline: none;
+}
+
 .removeRow {
   background-color: #f55e5e;
-  border-radius: 5px 5px 0px 0px;
+  border-radius: 5px 0px 0px 5px;
   width: 100%;
   padding: 5px 0px;
   display: none;
 }
 
+.removeRow img {
+  width: 25px;
+}
+
 .removeRow:hover {
   background-color: #fa4949;
   transition: all 500ms ease-out;
+}
+
+.tableBody tr:hover .removeRow {
+  display: flex;
+  justify-content: center;
+  text-align: center;
 }
 
 .tableBody td textarea {
@@ -108,11 +146,6 @@ tr {
 
 .tableBody td textarea:focus {
   opacity: 1;
-}
-
-.tableBody td:focus {
-  border: 2px solid #a5c0fdb9;
-  border-radius: 2px;
 }
 
 .textareaStyles {
