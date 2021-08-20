@@ -205,7 +205,17 @@ export default function Table({
               return <tr key={'row' + rowIndex}>{rows}</tr>;
             })}
           </tbody>
-          <tfoot></tfoot>
+          <tfoot className={styles.tableFoot}>
+            <tr>
+              <td></td>
+              <td
+                style={{ textAlign: 'right' }}
+                colSpan={filteredTable[0].length - 1}>
+                Total rows:
+              </td>
+              <td>{filteredTable.length}</td>
+            </tr>
+          </tfoot>
         </table>
       ) : (
         'Loading table...'

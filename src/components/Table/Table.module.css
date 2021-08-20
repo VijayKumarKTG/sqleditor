@@ -54,15 +54,18 @@
   z-index: 5;
 }
 
-.tableHead tr th:first-child {
-  background: none;
-  outline: none;
-}
-
-.tableFoot {
+.tableFoot tr td {
   background: #efefef;
   height: 30px;
-  border-radius: 5px;
+  border-radius: 0px 0px 5px 5px;
+  text-align: center;
+  padding: 10px;
+}
+
+.tableHead tr th:first-child,
+.tableFoot tr td:first-child {
+  background: none;
+  outline: none;
 }
 
 th {
