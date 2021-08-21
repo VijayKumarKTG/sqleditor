@@ -161,6 +161,8 @@ export default function Table({
 
   window.addEventListener('beforeunload', (e) => {
     //alerting before closing.
+    e.preventDefault();
+    console.log('Closing');
   });
 
   return (
