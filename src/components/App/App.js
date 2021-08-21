@@ -72,6 +72,7 @@ function App() {
   const [columns, setColumns] = useState([]);
 
   function onTablesDataChange(arr) {
+    setColumns(arr[0]);
     setTablesData(() => {
       let newTablesData = [...tablesData];
       newTablesData[activeTable] = arr;

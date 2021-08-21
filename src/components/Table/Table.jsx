@@ -75,9 +75,12 @@ export default function Table({
     } else {
       let newRow = [];
       selectCol.filter((col) => {
-        newRow.push(row[columns.indexOf(col)]);
+        if (columns.indexOf(col) > -1) {
+          newRow.push(row[columns.indexOf(col)]);
+        }
         return null;
       });
+      //console.log(newRow);
       return newRow;
     }
   }
@@ -103,24 +106,32 @@ export default function Table({
 
   // Fire only when the new data arrive
   if (allDat) {
-    filteredCols = queries.selectCol[0] === 'All' ? columns : queries.selectCol;
+    filteredCols =
+      queries.selectCol[0] === 'All'
+        ? columns
+        : columns.filter((col) => queries.selectCol.includes(col));
     filteredTable = filterTableData();
   }
 
   function onColumnDelete(column) {
-    let promptVal = prompt(
+    let promptVal = window.confirm(
       `Are you sure you want to delete column "${column}".`
     );
-    if (promptVal === 'yes' || promptVal === 'Yes' || promptVal === 'YES') {
+
+    if (promptVal) {
       let index = columns.indexOf(column);
       setAllDat(deleteCol(index));
-      setColumns([...columns.slice(0, index), ...columns.slice(index + 1)]);
+      setColumns(
+        index === 0
+          ? [...columns.slice(index + 1)]
+          : [...columns.slice(0, index), ...columns.slice(index + 1)]
+      );
     }
   }
 
   function onRowDelete(attr) {
-    let promptVal = prompt(`Are you sure you want the selected row.`);
-    if (promptVal === 'yes' || promptVal === 'Yes' || promptVal === 'YES') {
+    let promptVal = window.confirm(`Are you sure you want the selected row.`);
+    if (promptVal) {
       setAllDat(deleteRow(attr));
     }
   }
@@ -147,6 +158,10 @@ export default function Table({
       ? allDat.slice(1)
       : [...allDat.slice(0, index), ...allDat.slice(index + 1)];
   }
+
+  window.addEventListener('beforeunload', (e) => {
+    //alerting before closing.
+  });
 
   return (
     <div className={styles.tableContainer}>
@@ -210,7 +225,7 @@ export default function Table({
               <td></td>
               <td
                 style={{ textAlign: 'right' }}
-                colSpan={filteredTable[0].length - 1}>
+                colSpan={filteredCols.length - 1}>
                 Total rows:
               </td>
               <td>{filteredTable.length}</td>
